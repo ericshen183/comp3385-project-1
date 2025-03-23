@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Property; // Add this line
+use App\Models\Property;
 
 class PropertyController extends Controller
 {
@@ -15,17 +15,39 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'price' => 'required',
+            'title' => 'required',
+            'description' => 'required',
             'bedrooms' => 'required',
             'bathrooms' => 'required',
-            'storeys' => 'required',
-            'garages' => 'required',
+            'price' => 'required',
+            'type' => 'required',
+            'location' => 'required',
+            'photo' => 'required|image',
         ]);
-        
-        Property::create($request->all()); // Add this line back
+
+        $data = $request->all();
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        Property::create($data);
 
         return redirect()->route('property.index')
             ->with('success', 'Property created successfully.');
+    }
+
+    public function index()
+    {
+        $properties = Property::all();
+
+        return view('properties', compact('properties'));
+    }
+
+    public function show($property_id)
+    {
+        $property = Property::findOrFail($property_id);
+
+        return view('property-show', compact('property'));
     }
 }

@@ -1,10 +1,10 @@
-@extends('layouts.app')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <div class="container my-5">
         <h1 class="display-5 fw-bold text-center">Add Property</h1>
         <div class="col-lg-6 mx-auto">
-            <form action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form action="<?php echo e(route('property.store')); ?>" method="POST" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
                 <div class="mb-3">
                     <label for="title" class="form-label">Property Title</label>
                     <input type="text" class="form-control" id="title" name="title" required>
@@ -48,4 +48,5 @@
             </form>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\comp3385-project-1\resources\views/property-create.blade.php ENDPATH**/ ?>

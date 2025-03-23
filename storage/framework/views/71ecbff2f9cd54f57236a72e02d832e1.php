@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>COMP3385 - Assignment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/property-show.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/property-show.css')); ?>">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,16 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo e(url('/')); ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/about') }}">About</a>
+                    <a class="nav-link" href="<?php echo e(url('/about')); ?>">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/properties/create') }}">New Property</a>
+                    <a class="nav-link" href="<?php echo e(url('/properties/create')); ?>">New Property</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/properties') }}">Properties</a>
+                    <a class="nav-link" href="<?php echo e(url('/properties')); ?>">Properties</a>
                 </li>
             </ul>
         </div>
@@ -35,9 +35,10 @@
 </nav>
 
 <div class="container my-5">
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\comp3385-project-1\resources\views/layouts/app.blade.php ENDPATH**/ ?>
